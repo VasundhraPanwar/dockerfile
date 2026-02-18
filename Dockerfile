@@ -1,10 +1,10 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:debian
 
 USER root
 
-RUN apk update && apk add --no-cache \
+RUN apt-get update && apt-get install -y \
     libreoffice \
-    font-noto \
-    bash
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
 USER node
